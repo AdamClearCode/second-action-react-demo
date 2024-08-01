@@ -6,8 +6,6 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-        with:
-          node-version: '20'
       - name: Install NodeJs
         uses: actions/setup-node@v3
         with:
@@ -18,12 +16,11 @@ jobs:
         run: npm test
 
   deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v3
-        with:
-          node-version: '20'
       - name: Install NodeJs
         uses: actions/setup-node@v3
         with:
